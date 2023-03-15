@@ -1,10 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import LandingSearch from "./components/LandingSearch";
+import Results from "./components/Results";
 
 function Landing(){
+  const [search, setSearch] = useState("");
   return (
     <div>
-    <LandingSearch> </LandingSearch>
+    <LandingSearch
+    setSearch={setSearch}/>
+
+    <Results search = {search}/>
+    
   </div>
   )
 }

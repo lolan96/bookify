@@ -5,22 +5,18 @@ import InputUnstyled from '@mui/base/InputUnstyled';
 //     return <InputUnstyled />;
 
 // };
+function LandingSearch({setSearch}) {
+  const [value, setValue] = useState("")
 
-function LandingSearch() {
-   const [value, setValue] = useState(0);
-
-  
-    
-  
     function handleChange(event) {
       setValue(event.target.value);
     }
   
    function handleSubmit(event) {
       event.preventDefault();
+      setSearch(value)
     }
   
-     
       return (
         <form onSubmit={handleSubmit}>
           <label>
