@@ -1,9 +1,10 @@
 import React from "react";
+import LandingSearch from "./components/LandingSearch";
 
 function Landing(){
   return (
     <div>
-    <p>Test</p>
+    <LandingSearch> </LandingSearch>
   </div>
   )
 }
