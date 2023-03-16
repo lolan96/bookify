@@ -16,23 +16,15 @@ function LandingSearch({setSearch}) {
       event.preventDefault();
       setSearch(value)
     }
-  
       return (
         <form onSubmit={handleSubmit}>
           <label>
-            Name:
-            <input type="text" value={value} onChange={handleChange} />
+            Search
+             <input type="text" value={value} onChange={handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
       );
-    }
-  
-  
-
-
-
-
-
+    };
 
 export default LandingSearch;

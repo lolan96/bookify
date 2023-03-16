@@ -4,15 +4,13 @@ import React, { useEffect } from "react";
 
 function Results({search}) {
     useEffect(()=> {
-       if (search !==""){
-        GoogleBooksAPI.search(search).then(res=>{
-             console.log(res)
+        if (search !=="") {
+             GoogleBooksAPI.search(search).then(res=> {
+                 console.log(res)
             })
         } 
     }, [search]);
-    return <div> results 
+    return <div>results</div>
+};
 
-    </div>
-}
-
-export default Results
+export default Results;
