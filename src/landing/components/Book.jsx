@@ -4,9 +4,15 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 function Book({bookdata}) { 
   console.log(bookdata);
 
+//function save() {
+//  localStorage.setItem("bookdata", JSON.stringify(bookdata));
+//}
 function save() {
-  localStorage.setItem("bookdata", JSON.stringify(bookdata));
+  const existingItems = JSON.parse(localStorage.getItem("items")) || [];
+  const newItems = [...existingItems, bookdata];
+  localStorage.setItem("items", JSON.stringify(newItems));
 }
+
 
   return (<div><p>{bookdata.title} </p>
   <p>{bookdata.authors[0]}</p>
