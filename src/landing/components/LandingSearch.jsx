@@ -16,6 +16,8 @@ function LandingSearch({setSearch}) {
       event.preventDefault();
       setSearch(value)
     }
+
+    
       return (
         <form onSubmit={handleSubmit}>
           <label>
