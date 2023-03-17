@@ -1,13 +1,12 @@
 import React from "react";
+import Shelf from "./components/Shelf";
 
 function Library(){
   return (
     <div>
-    <p>Test</p>
+    <Shelf />
   </div>
   )
 }
-
-
 
 export default Library;

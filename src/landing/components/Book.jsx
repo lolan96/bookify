@@ -12,8 +12,6 @@ function save() {
   const newItems = [...existingItems, bookdata];
   localStorage.setItem("items", JSON.stringify(newItems));
 }
-
-
   return (<div><p>{bookdata.title} </p>
   <p>{bookdata.authors[0]}</p>
   <FontAwesomeIcon icon={faPlus} onClick ={save}/>
