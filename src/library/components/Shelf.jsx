@@ -26,25 +26,15 @@ const BookList = styled.div`
   overflow: "auto";
 `;
 
-const InnerList = React.memo(() => {
-    const [result, setResult] = useState([]);
-  
-    useEffect(() => {
-      const libraryBook = JSON.parse(localStorage.getItem("items"));
-      setResult(libraryBook || []);
-    }, []);
-  
-    return result.map((bookdata) => <Book bookdata={bookdata} />);
-  });
-  
 
-    const Shelf = ({ shelf, books, index }) => {
-      const handleDraggableProps = provided => {
-        return {
-          ...provided.draggableProps,
-          ref: provided.innerRef,
-        };
-      };
+
+const Shelf = ({ shelf, index }) => {
+  const handleDraggableProps = provided => {
+    return {
+      ...provided.draggableProps,
+      ref: provided.innerRef,
+    };
+  };
 
   const handleDroppableProps = (provided, snapshot) => {
     return {
@@ -62,7 +52,7 @@ const InnerList = React.memo(() => {
           <Droppable droppableId={shelf.id} direction="horizontal" type="book">
             {(provided, snapshot) => (
               <BookList {...handleDroppableProps(provided, snapshot)}>
-                <InnerList books={books} />
+                <Book bookdata={shelf.bookDetails} />
                 {provided.placeholder}
               </BookList>
             )}
@@ -74,4 +64,3 @@ const InnerList = React.memo(() => {
 };
 
 export default Shelf;
-

@@ -19,21 +19,23 @@ const Container = styled.div`
 
 `;
 
-
-
-const Book = ({ bookdata, index }) => {
+const Book = ({ bookdata }) => {
   return (
-    <Draggable draggableId={bookdata} index={index}>
+    <>
+    {bookdata.map((book, index) => (
+    <Draggable draggableId={book.title} index={index} key={index}>
       {(provided, snapshot) => (
         <Container
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}>
-          <img src={bookdata.imageLinks.smallThumbnail} alt={bookdata.title} />
+          <img src={book.image} alt={book.title} />
         </Container>
       )}
     </Draggable>
+    ))}
+    </>
   );
 };
 

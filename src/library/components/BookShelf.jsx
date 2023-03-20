@@ -1,127 +1,86 @@
-import React, { useState } from 'react';
-import { DragDropContext, Droppable } from '@hello-pangea/dnd';
-import initialData from './initial-data';
-import Shelf from './Shelf';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import initialData from "./initial-data";
+import Shelf from "./Shelf";
+import styled from "styled-components";
 
 const Container = styled.div`
   background-color: white;
   padding: 8px;
 `;
 
-function InnerList({ shelf, bookMap, index }) {
-  const books = shelf.bookIds.map(bookId => bookMap[bookId]);
-  return <Shelf shelf={shelf} books={books} index={index} />;
-}
-
 export default function Bookshelf() {
-  const [state, setState] = useState(initialData);
+  const initialInput = initialData.savedShelves;
+  const existingItems =
+    JSON.parse(localStorage.getItem("items")) || initialInput;
+  const [state, setState] = useState(existingItems);
+  console.log(state);
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+  
+    return result;
+  };
+  /**
+   * Moves an item from one list to another list.
+   */
+   const move = (source, destination, droppableSource, droppableDestination) => {
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
+  
+    destClone.splice(droppableDestination.index, 0, removed);
+  
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+  
+    return result;
+  };
 
-  const onDragEnd = result => {
-    const { destination, source, draggableId, type } = result;
+  function onDragEnd(result) {
+    const { source, destination } = result;
 
+    // dropped outside the list
     if (!destination) {
       return;
     }
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    };
+    const sInd = +source.droppableId;
+    const dInd = +destination.droppableId;
 
-    if (type === 'shelf') {
-      const newShelfOrder = Array.from(state.shelfOrder);
-      newShelfOrder.splice(source.index, 1);
-      newShelfOrder.splice(destination.index, 0, draggableId);
-
-      const newState = {
-        ...state,
-        shelfOrder: newShelfOrder,
-      };
+    if (sInd === dInd) {
+      const items = reorder(state[sInd], source.index, destination.index);
+      const newState = [...state];
+      newState[sInd] = items;
       setState(newState);
-      return;
-    };
+    } else {
+      console.log(state)
+      console.log(sInd)
+      const result = move(state[sInd], state[dInd], source, destination);
+      const newState = [...state];
+      newState[sInd] = result[sInd];
+      newState[dInd] = result[dInd];
 
-    const start = state.shelves[source.droppableId];
-    const finish = state.shelves[destination.droppableId];
+      setState(newState.filter(group => group.length));
+    }
+  }
 
-    if (start === finish) {
-      const newBookIds = Array.from(start.bookIds);
-      newBookIds.splice(source.index, 1);
-      newBookIds.splice(destination.index, 0, draggableId);
-
-      const newShelf = {
-        ...start,
-        bookIds: newBookIds,
-      };
-
-      const newState = {
-        ...state,
-        shelves: {
-          ...state.shelves,
-          [newShelf.id]: newShelf,
-        },
-      };
-
-      setState(newState);
-      return;
-    };
-
-    // moving from one list to another
-    const startBookIds = Array.from(start.bookIds);
-    startBookIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      bookIds: startBookIds,
-    };
-
-    const finishBookIds = Array.from(finish.bookIds);
-    finishBookIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      bookIds: finishBookIds,
-    };
-
-    const newState = {
-      ...state,
-      shelves: {
-        ...state.shelves,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
-    setState(newState);
-  };
+  
+  
 
   return (
-    <DragDropContext onDragEnd={onDragEnd} >
-      <Droppable 
-        droppableId="bookshelf" 
-        direction="vertical" 
-        type="shelf"
-      >
-      {(provided) => (
-        <Container
-          {...provided.droppableProps}
-          ref={provided.innerRef}
-        >
-          {state.shelfOrder.map((shelfId, index) => {
-            const shelf = state.shelves[shelfId];
-
-            return (
-              <InnerList 
-                key={shelf.id} 
-                shelf={shelf}  
-                bookMap={state.books} 
-                index={index}
-              />
-            );
-          })}
-          {provided.placeholder}
-        </Container>
-      )}
+    <DragDropContext onDragEnd={onDragEnd}>
+      {state.map((shelf, index) => (
+      <Droppable droppableId={index+""} direction="vertical" type="shelf">
+        {provided => (
+          <Container {...provided.droppableProps} ref={provided.innerRef}>
+               <Shelf shelf={shelf} index={index}/>
+            {provided.placeholder}
+          </Container>
+        )}
       </Droppable>
+      ))}
     </DragDropContext>
   );
-};
+}
