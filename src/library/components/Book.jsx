@@ -1,10 +1,40 @@
+import React from "react";
+import styled from "styled-components";
+import { Draggable } from "@hello-pangea/dnd";
 
-function Book({bookdata}) { 
-  console.log(bookdata);
-  return (<div>
-     <img src= {bookdata.imageLinks.smallThumbnail} alt = {bookdata.title}/>
-    </div>
- )
-}
+const Container = styled.div`
+  margin-right: 8px;
+  background-color: ${props =>
+    props.isDragDisabled
+      ? "lightgrey"
+      : props.isDragging
+      ? "lightgreen"
+      : "white"};
+
+  font-family: arial;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+
+
+
+const Book = ({ bookdata, index }) => {
+  return (
+    <Draggable draggableId={bookdata} index={index}>
+      {(provided, snapshot) => (
+        <Container
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          isDragging={snapshot.isDragging}>
+          <img src={bookdata.imageLinks.smallThumbnail} alt={bookdata.title} />
+        </Container>
+      )}
+    </Draggable>
+  );
+};
 
 export default Book;

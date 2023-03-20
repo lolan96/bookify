@@ -1,10 +1,17 @@
+import { DragDropContext } from "@hello-pangea/dnd";
 import React from "react";
-import Shelf from "./components/Shelf";
+import Bookshelf from "./components/Bookshelf";
+import NavLibrary from "./components/NavLibrary";
+import Header from "./components/Header";
 
 function Library(){
   return (
     <div>
-    <Shelf />
+    <Header />
+    <NavLibrary />
+    <DragDropContext>
+       <Bookshelf />
+    </DragDropContext>
   </div>
   )
 }
