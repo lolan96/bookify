@@ -26,7 +26,7 @@ const BookList = styled.div`
   overflow: "auto";
 `;
 
-const Shelf = ({ shelf }) => {
+const Shelf = ({ shelf, state, setState }) => {
     const handleDroppableProps = (provided, snapshot) => {
         return {
             ...provided.droppableProps,
@@ -41,7 +41,7 @@ const Shelf = ({ shelf }) => {
             <Droppable droppableId={shelf.id} direction="horizontal" type="book">
                 {(provided, snapshot) => (
                     <BookList {...handleDroppableProps(provided, snapshot)}>
-                        <Book bookdata={shelf.bookDetails} />
+                        <Book bookdata={shelf.bookDetails} shelfId={shelf.id} state={state} setState={setState}/>
                         {provided.placeholder}
                     </BookList>
                 )}

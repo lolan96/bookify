@@ -19,7 +19,19 @@ const Container = styled.div`
 
 `;
 
-const Book = ({ bookdata }) => {
+const Book = ({ bookdata, shelfId, state, setState }) => {
+  const handleDelete = e => {
+    console.log(e.target.dataset)
+    const data = e.target.dataset
+    const newState = [...state];
+    const shelfIdx = state.findIndex((shelf) => shelf.id === data.shelfid);
+    
+    const bookDetails = [...state[shelfIdx].bookDetails]
+    bookDetails.splice(data.bookindex, 1)
+    newState[shelfIdx].bookDetails = bookDetails;
+    setState(newState);
+    localStorage.setItem("items", JSON.stringify(newState));
+  }
   return (
     <>
     {bookdata.map((book, index) => (
@@ -31,6 +43,7 @@ const Book = ({ bookdata }) => {
           ref={provided.innerRef}
           isDragging={snapshot.isDragging}>
           <img src={book.image} alt={book.title} />
+          <button data-shelfid={shelfId} data-bookindex={index} onClick={handleDelete}>Delete</button>
         </Container>
       )}
     </Draggable>

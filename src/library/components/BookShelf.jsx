@@ -76,7 +76,7 @@ export default function Bookshelf() {
                 <Droppable droppableId={`${index}`} direction="horizontal" type="shelf" key={shelf.id}>
                     {provided => (
                         <Container {...provided.droppableProps} ref={provided.innerRef}>
-                            <Shelf shelf={shelf} />
+                            <Shelf shelf={shelf} state={state} setState={setState}/>
                             {provided.placeholder}
                         </Container>
                     )}
