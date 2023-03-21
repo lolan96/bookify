@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Draggable } from "@hello-pangea/dnd";
+import RemoveIcon from '@mui/icons-material/Remove';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
 
 const Container = styled.div`
   margin-right: 8px;
@@ -45,12 +48,15 @@ const Book = ({ bookdata, shelfId, state, setState }) => {
               ref={provided.innerRef}
               isDragging={snapshot.isDragging}>
               <img src={book.image} alt={book.title} />
-              <button
+              <Tooltip 
+                title="Delete"
                 data-shelfid={shelfId}
                 data-bookindex={index}
                 onClick={handleDelete}>
-                Delete
-              </button>
+                  <IconButton>
+                    <RemoveIcon />
+                  </IconButton>
+              </Tooltip>
             </Container>
           )}
         </Draggable>

@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import AddIcon from "@mui/icons-material/Add";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
 import initialData from "../../library/components/initial-data";
 
 function Book({ bookdata }) {
@@ -26,7 +27,11 @@ function Book({ bookdata }) {
     <div>
       <p>{bookdata.title} </p>
       <p>{bookdata.authors[0]}</p>
-      <FontAwesomeIcon icon={faPlus} onClick={save} />
+      <Tooltip title="Add to My Library" onClick={save}>
+        <IconButton>
+          <AddIcon />
+        </IconButton>
+      </Tooltip>
       <img src={bookdata.imageLinks.smallThumbnail} alt={bookdata.title} />
     </div>
   );
