@@ -5,7 +5,7 @@ import react, {useState} from "react";
 //     return <InputUnstyled />;
 
 // };
-function LandingSearch({setSearch}) {
+function LandingSearch({setSearch}){
   const [value, setValue] = useState("")
 
     function handleChange(event) {
@@ -16,8 +16,6 @@ function LandingSearch({setSearch}) {
       event.preventDefault();
       setSearch(value)
     }
-
-    
       return (
         <form onSubmit={handleSubmit}>
           <label>
@@ -28,5 +26,4 @@ function LandingSearch({setSearch}) {
         </form>
       );
     };
-
 export default LandingSearch;
