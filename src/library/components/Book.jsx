@@ -23,7 +23,7 @@ const Book = ({ bookdata }) => {
   return (
     <>
     {bookdata.map((book, index) => (
-    <Draggable draggableId={book.title} index={index} key={index}>
+    <Draggable draggableId={book.id.identifier} index={index} key={book.id.identifier}>
       {(provided, snapshot) => (
         <Container
           {...provided.draggableProps}

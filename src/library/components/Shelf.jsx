@@ -19,48 +19,35 @@ const BookList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
   background-color: ${props =>
-    props.isDraggingOver ? "lightgrey" : "inherit"};
+        props.isDraggingOver ? "lightgrey" : "inherit"};
   min-height: 120px;
 
   display: flex;
   overflow: "auto";
 `;
 
-
-
-const Shelf = ({ shelf, index }) => {
-  const handleDraggableProps = provided => {
-    return {
-      ...provided.draggableProps,
-      ref: provided.innerRef,
+const Shelf = ({ shelf }) => {
+    const handleDroppableProps = (provided, snapshot) => {
+        return {
+            ...provided.droppableProps,
+            ref: provided.innerRef,
+            isDraggingOver: snapshot.isDraggingOver,
+        };
     };
-  };
 
-  const handleDroppableProps = (provided, snapshot) => {
-    return {
-      ...provided.droppableProps,
-      ref: provided.innerRef,
-      isDraggingOver: snapshot.isDraggingOver,
-    };
-  };
-
-  return (
-    <Draggable draggableId={shelf.id} index={index}>
-      {provided => (
-        <Container {...handleDraggableProps(provided)}>
-          <Title {...provided.dragHandleProps}>{shelf.title}</Title>
-          <Droppable droppableId={shelf.id} direction="horizontal" type="book">
-            {(provided, snapshot) => (
-              <BookList {...handleDroppableProps(provided, snapshot)}>
-                <Book bookdata={shelf.bookDetails} />
-                {provided.placeholder}
-              </BookList>
-            )}
-          </Droppable>
+    return (
+        <Container>
+            <Title>{shelf.title}</Title>
+            <Droppable droppableId={shelf.id} direction="horizontal" type="book">
+                {(provided, snapshot) => (
+                    <BookList {...handleDroppableProps(provided, snapshot)}>
+                        <Book bookdata={shelf.bookDetails} />
+                        {provided.placeholder}
+                    </BookList>
+                )}
+            </Droppable>
         </Container>
-      )}
-    </Draggable>
-  );
+    );
 };
 
 export default Shelf;
