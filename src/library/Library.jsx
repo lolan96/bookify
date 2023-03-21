@@ -3,16 +3,14 @@ import React from "react";
 import Bookshelf from "./components/BookShelf";
 // import NavLibrary from "./components/NavLibrary";
 
-
-function Library(){
+function Library() {
   return (
     <div>
-
-    <DragDropContext>
-       <Bookshelf />
-    </DragDropContext>
-  </div>
-  )
+      <DragDropContext>
+        <Bookshelf />
+      </DragDropContext>
+    </div>
+  );
 }
 
 export default Library;
