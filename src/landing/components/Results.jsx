@@ -1,20 +1,30 @@
 import LandingSearch from "./LandingSearch";
 import GoogleBooksAPI from "./GoogleBooksAPI";
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useState, useRef } from "react";
 import Book from "./Book";
 
-function Results({ search }) {
+  
+  function Results({ search }) {
   const [result, setResult] = useState();
+  const scrollRef = useRef()
+  const scrollCallback = () => {
+    scrollRef.current.scrollIntoView({ behavior: 'smooth'})
+    console.log("scrollCallback");
+  }
   useEffect(() => {
     if (search !== "") {
       GoogleBooksAPI.search(search).then(({ data }) => {
         console.log(data);
         setResult(data.items);
+        setTimeout(() => {
+          scrollCallback();
+        }, 500);
       });
     }
   }, [search]);
+  
   return (
-    <div>
+    <div ref={scrollRef}>
       {result
         ? result.map((bookdata) => {
             return <Book bookdata={bookdata.volumeInfo} />;
@@ -22,6 +32,7 @@ function Results({ search }) {
         : ""}
     </div>
   );
-}
+  };
 
+    
 export default Results;
