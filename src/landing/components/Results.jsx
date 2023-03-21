@@ -2,6 +2,7 @@ import LandingSearch from "./LandingSearch";
 import GoogleBooksAPI from "./GoogleBooksAPI";
 import React, { Component, useEffect, useState, useRef } from "react";
 import Book from "./Book";
+import Nav from "./Nav";
 
   
   function Results({ search }) {
