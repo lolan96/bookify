@@ -2,8 +2,6 @@ import GoogleBooksAPI from "./GoogleBooksAPI";
 import React, { useEffect, useState, useRef } from "react";
 import Book from "./Book";
 import "../Landing.css";
-// import Box from '@mui/material/Box';
-// import Paper from '@mui/material/Paper';
 import Grid from "@mui/material/Grid";
 
 function Results({ search }) {
