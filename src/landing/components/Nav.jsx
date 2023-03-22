@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
+import "../assets/fonts/PlayfairDisplay.ttf"
+
 
 
 const pages = ["My Library"];
@@ -97,13 +99,13 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontFamily: "monospace",
+                fontFamily: "Playfair",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}>
-              Bookify
+              Bookifiy
             </Typography>
             <Box sx={{ 
               flexGrow: 1, 
