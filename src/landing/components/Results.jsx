@@ -12,7 +12,7 @@ function Results({ search }) {
   };
   useEffect(() => {
     if (search !== "") {
-      GoogleBooksAPI.search(search).then(({ data }) => {
+      GoogleBooksAPI(search).then(({ data }) => {
         console.log(data);
         setResult(data.items);
         setTimeout(() => {
@@ -23,7 +23,7 @@ function Results({ search }) {
   }, [search]);
 
   return (
-    <div ref={scrollRef}>
+    <div className="results" ref={scrollRef}>
       {result
         ? result.map(bookdata => {
             return <Book bookdata={bookdata.volumeInfo} />;
