@@ -36,6 +36,7 @@ Bookify is a web application that uses the Google Books API to search for books.
 To use Bookify, follow these steps:
 
 1. Clone the repository to your local machine
+
     ```git clone https://github.com/lolanewell/bookify.git```
 
 2. Install the required dependencies
@@ -70,7 +71,8 @@ To use Bookify, follow these steps:
 
 To use Bookify, follow these steps:
 
-Open the website [here](https://lolanewell.github.io/bookify/)
+Open the website [here](https://lolanewell.github.io/bookify/).
+
 Enter the name of the book you wish to search for in the search bar.
 Click the search button or press the Enter key.
 A list of books that match the search criteria will be displayed.
@@ -102,7 +104,7 @@ Bookify uses the following tutorials and/or references:
 -[React- Hook-State](https://legacy.reactjs.org/docs/hooks-state.html)
 -[React- Tooltip](https://mui.com/material-ui/react-tooltip/)\
 -[React- Router](https://reactrouter.com/web/guides/quick-start)\
--[React- Router- DOM](https://reactrouter.com/web/guides/quick-start)\
+-[React- Router- DOM](https://reactrouter.com/web/guides/quick-start)
 
 ## Contributors
 
@@ -118,8 +120,6 @@ Thanks to the main people who have contributed to this project:\
 ```If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!```
 
 ### If you would like to contribute to Bookify, please follow these steps:
-
-
 
 1. Fork the Project
 2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
