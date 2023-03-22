@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
+
 body{
-    background-image: radial-gradient(circle, #057065 0%, #053c52 28%, #0a3d57 32%, #0b2557 100% );
+    /* background-image: radial-gradient(circle, #244F55 0%, #285D60 28%, #2C6A6A 32%, #33847F 100% ); */
     background-size: cover;
+    background-color: #244F55;
 }
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 35rem;
+}
+

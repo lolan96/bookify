@@ -33,13 +33,13 @@ input[type="submit"] {
   font-family: sans-serif;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #33847F;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #0062cc;
+    background-color: #B27B35;
   }
 `
 

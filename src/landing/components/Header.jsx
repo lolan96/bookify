@@ -1,15 +1,13 @@
-import styled from "styled-components";
-import logo from "../assets/images/2logo.png"
+import logo from "./logo-removebg-preview.png";
+import "../Landing.css";
 
-const Container = styled.h1`
-
-`;
 
 function Header() {
-  return( <Container>
-<img src={logo} alt="" />
-    </Container>);
+  return (
+    <div className="headerContainer">
+      <img className="logo" src={logo} alt="logo" />
+    </div>
+  );
 }
-
 
 export default Header;

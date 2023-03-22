@@ -1,10 +1,7 @@
-import styled from 'styled-components'
 import GoogleBooksAPI from "./GoogleBooksAPI";
 import React, { useEffect, useState, useRef } from "react";
 import Book from "./Book";
-
-const DIV = styled.div`
-background-image: radial-gradient(circle, #057065 0%, #053c52 28%, #0a3d57 32%, #0b2557 100% );`
+import "../Landing.css";
 
 function Results({ search }) {
   const [result, setResult] = useState();
@@ -26,13 +23,13 @@ function Results({ search }) {
   }, [search]);
 
   return (
-    <DIV ref={scrollRef}>
+    <div ref={scrollRef}>
       {result
         ? result.map(bookdata => {
             return <Book bookdata={bookdata.volumeInfo} />;
           })
         : ""}
-    </DIV>
+    </div>
   );
 }
 
