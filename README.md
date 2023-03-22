@@ -70,7 +70,7 @@ To use Bookify, follow these steps:
 
 To use Bookify, follow these steps:
 
-Open the website [here](https://lolanewell.github.io/bookify/).
+Open the website [here](https://main--prismatic-manatee-5bddd1.netlify.app/).
 
 Enter the name of the book you wish to search for in the search bar.
 Click the search button or press the Enter key.
