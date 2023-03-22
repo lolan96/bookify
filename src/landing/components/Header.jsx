@@ -1,6 +1,5 @@
-import logo from "./logo-removebg-preview.png";
+import logo from "./assets/logo-removebg-preview.png";
 import "../Landing.css";
-
 
 function Header() {
   return (

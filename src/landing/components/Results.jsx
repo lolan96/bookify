@@ -2,6 +2,9 @@ import GoogleBooksAPI from "./GoogleBooksAPI";
 import React, { useEffect, useState, useRef } from "react";
 import Book from "./Book";
 import "../Landing.css";
+// import Box from '@mui/material/Box';
+// import Paper from '@mui/material/Paper';
+import Grid from "@mui/material/Grid";
 
 function Results({ search }) {
   const [result, setResult] = useState();
@@ -23,13 +26,24 @@ function Results({ search }) {
   }, [search]);
 
   return (
-    <div className="results" ref={scrollRef}>
+    <Grid ref={scrollRef} container justifyContent="center" direction="row">
       {result
         ? result.map(bookdata => {
-            return <Book bookdata={bookdata.volumeInfo} />;
+            return (
+              <Grid
+                className="results"
+                item
+                xs={12}
+                sm={6}
+                md={3}
+                lg={2}
+                key={bookdata.volumeInfo.industryIdentifiers[0]}>
+                <Book bookdata={bookdata.volumeInfo} />
+              </Grid>
+            );
           })
         : ""}
-    </div>
+    </Grid>
   );
 }
 

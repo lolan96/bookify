@@ -10,9 +10,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
-import "../assets/fonts/PlayfairDisplay.ttf"
-
-
+import "../assets/fonts/PlayfairDisplay.ttf";
 
 const pages = ["My Library"];
 
@@ -46,11 +44,12 @@ function ResponsiveAppBar() {
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
+                fontFamily: "PlayfairDisplay",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#F8F5F1",
                 textDecoration: "none",
+                fontSize: "2em",
               }}>
               Bookify
             </Typography>
@@ -83,41 +82,47 @@ function ResponsiveAppBar() {
                   display: { xs: "block", md: "none" },
                 }}>
                 {pages.map(page => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} component={Link} to="/Library">
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
             <Typography
               variant="h5"
               noWrap
               component="a"
-              href=""
+              href="/"
               sx={{
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontFamily: "Playfair",
+                fontFamily: "PlayfairDisplay",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
                 textDecoration: "none",
               }}>
-              Bookifiy
+              Bookify
             </Typography>
-            <Box sx={{ 
-              flexGrow: 1, 
-              display: { xs: "none", md: "flex" },
-              justifyContent: "flex-end"
-               }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                justifyContent: "flex-end",
+              }}>
               {pages.map(page => (
                 <Button
                   component={Link}
                   to="/Library"
                   key={page}
-                  sx={{ my: 2, color: "white", display: "block" }}>
+                  sx={{
+                    my: 2,
+                    color: "#F8F5F1",
+                    display: "block",
+                    fontFamily: "monospace",
+                    fontSize: "1.2em",
+                  }}>
                   {page}
                 </Button>
               ))}

@@ -1,24 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap");
 
-body{
-    /* background-image: radial-gradient(circle, #244F55 0%, #285D60 28%, #2C6A6A 32%, #33847F 100% ); */
-    background-size: cover;
-    background-color: #244F55;
+@font-face {
+  font-family: "Playfair Display";
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/playfairdisplay/v30/nuFRD-vYSZviVYUb_rj3ij__anPXDTnCjmHKM4nYO7KN_pqTXtXA_3-uE0qEE5Do.woff)
+    format("woff");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+body {
+  background-size: cover;
+  background-color: #244f55;
 }
 
 .headerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-height: 35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 35rem;
 }
 
+.results {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.landingBook {
+  width: 200px;
+  text-align: center;
+  display: block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: #f8f5f1;
+  font-family: monospace;
+  font-size: 1.1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 2em;
+  padding: 1%;
+}
+.circleIcon {
+  color: #f8f5f1;
+}
+
+.landingBookImage {
+  height: 14em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.landingBookImage > img {
+  max-height: 100%;
+}
+
+.bookTitle {
+  line-height: 1.2em;
+  height: 3.6em;
+  overflow: hidden;
+  font-size: 1.2em;
+  color: #f8f5f1;
+}
+
+.bookAuthor {
+  font-style: italic;
+  color: #f8f5f1;
+}

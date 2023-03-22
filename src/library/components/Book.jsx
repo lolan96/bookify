@@ -1,35 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import { Draggable } from "@hello-pangea/dnd";
-import RemoveIcon from '@mui/icons-material/Remove';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
+import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import "../Library.css";
 
 const Container = styled.div`
   margin-right: 8px;
   background-color: ${props =>
     props.isDragDisabled
-      ? "lightgrey"
+      ? "#244F55"
       : props.isDragging
-      ? "lightgreen"
-      : "white"};
+      ? "#58835E"
+      : "#244F55"};
 
-  font-family: arial;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 `;
 
 const Book = ({ bookdata, shelfId, state, setState }) => {
-  const handleDelete = e => {
-    console.log(e.target.dataset);
-    const data = e.target.dataset;
+  const handleDelete = (shelfid, bookindex) => {
     const newState = [...state];
-    const shelfIdx = state.findIndex(shelf => shelf.id === data.shelfid);
+    const shelfIdx = state.findIndex(shelf => shelf.id === shelfid);
+    console.log(shelfIdx);
 
     const bookDetails = [...state[shelfIdx].bookDetails];
-    bookDetails.splice(data.bookindex, 1);
+    bookDetails.splice(bookindex, 1);
     newState[shelfIdx].bookDetails = bookDetails;
     setState(newState);
     localStorage.setItem("items", JSON.stringify(newState));
@@ -48,14 +44,15 @@ const Book = ({ bookdata, shelfId, state, setState }) => {
               ref={provided.innerRef}
               isDragging={snapshot.isDragging}>
               <img src={book.image} alt={book.title} />
-              <Tooltip 
+              <Tooltip
+                className="tooltip"
                 title="Delete"
                 data-shelfid={shelfId}
                 data-bookindex={index}
-                onClick={handleDelete}>
-                  <IconButton>
-                    <RemoveIcon />
-                  </IconButton>
+                onClick={e => handleDelete(shelfId, index)}>
+                <IconButton>
+                  <HighlightOffRoundedIcon className="deleteButton" />
+                </IconButton>
               </Tooltip>
             </Container>
           )}

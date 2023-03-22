@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Droppable, Draggable } from "@hello-pangea/dnd";
+import { Droppable } from "@hello-pangea/dnd";
 import Book from "./Book";
-
-const Container = styled.div`
-  margin: 8px;
-  border-bottom: 5px solid black;
-  border-radius: 2px;
-  background-color: white;
-`;
-
-const Title = styled.h3`
-  padding-left: 8px;
-  font-family: arial;
-`;
+import "../Library.css";
 
 const BookList = styled.div`
   padding: 8px;
   transition: background-color 0.2s ease;
-  background-color: ${props =>
-    props.isDraggingOver ? "lightgrey" : "inherit"};
+  background-color: ${props => (props.isDraggingOver ? "#B27B35" : "inherit")};
   min-height: 120px;
 
   display: flex;
@@ -36,8 +24,8 @@ const Shelf = ({ shelf, state, setState }) => {
   };
 
   return (
-    <Container>
-      <Title>{shelf.title}</Title>
+    <div className="shelfContainer">
+      <h3 className="shelfTitle">{shelf.title}</h3>
       <Droppable droppableId={shelf.id} direction="horizontal" type="book">
         {(provided, snapshot) => (
           <BookList {...handleDroppableProps(provided, snapshot)}>
@@ -51,7 +39,7 @@ const Shelf = ({ shelf, state, setState }) => {
           </BookList>
         )}
       </Droppable>
-    </Container>
+    </div>
   );
 };
 

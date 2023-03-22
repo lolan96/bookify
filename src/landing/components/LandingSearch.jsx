@@ -1,36 +1,32 @@
-import styled from 'styled-components'
-import react, { useState } from "react";
-// import InputUnstyled from '@mui/base/InputUnstyled';
-
-// function LandingSearch(props) {
-//     return <InputUnstyled />;
-
-// };
+import styled from "styled-components";
+import React, { useState } from "react";
+// import "../Library.css";
 
 const Form = styled.form`
 input[type="text"] {
   width: 50%;
   position: relative;
   padding: 15px, 10px;
-  border: none;
+  border-width: 0.1em;
+  border-color: white;
   border-radius: 0.2em;
   text-align: center;
-  font-size: 35px;
-  font-family: sans-serif;
-  margin-bottom: 20px;
+  font-size: 2em;
+  font-family: monospace;
+  margin-bottom: 1em;
   margin-left: 25%;
-  margin-right: 25%;
+  margin-right: 10%;
   
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 input[type="submit"] {
-  margin-left: 45%;
-  margin-bottom: 10%;
+  margin-left: calc(50% - 3em);
+  margin-bottom: 6em;
   border-radius: 0.7em;
   border: none;
-  width: 10%;
+  width: 6em;
   height: 3em;
-  font-family: sans-serif;
+  font-family: monospace;
   font-weight: bold;
   color: #fff;
   background-color: #33847F;
@@ -41,8 +37,7 @@ input[type="submit"] {
   &:hover {
     background-color: #B27B35;
   }
-`
-
+`;
 
 function LandingSearch({ setSearch }) {
   const [value, setValue] = useState("");
@@ -56,11 +51,16 @@ function LandingSearch({ setSearch }) {
     setSearch(value);
   }
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="search">
       <label>
-        <input type="text" value={value} onChange={handleChange} placeholder="Search"/>
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          // placeholder="..."
+        />
       </label>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="search" className="submitButton" />
     </Form>
   );
 }

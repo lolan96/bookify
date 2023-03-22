@@ -5,7 +5,7 @@ import Shelf from "./Shelf";
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: white;
+  background-color: #244f55;
   padding: 8px;
 `;
 
