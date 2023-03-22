@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import logo from "../assets/images/2logo.png"
 
 const Container = styled.h1`
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
 `;
 
 function Header() {
-  return <Container>Bookify</Container>;
+  return( <Container>
+<img src={logo} alt="" />
+    </Container>);
 }
+
 
 export default Header;
