@@ -82,15 +82,19 @@ To add a book to a certain shelf, drag and drop the book on the desired shelf.
 ## Screenshots
 
 Desktop
-![Screenshot of the application](assets/images/MD1.png)
+![Screenshot of the application](./src/landing/assets/screenshots/desktop.png)
 
-![Screenshot of the application](assets/images/MD2.png)
+![Screenshot of the application](./src/landing/assets/screenshots/desktopLibrary.png)
 
 Tablet
-![Screenshot of the application](assets/images/MD3tablet.jpg)
+![Screenshot of the application](./src/landing/assets/screenshots/tablet.png)
+
+![Screenshot of the application](./src/landing/assets/screenshots/tabletLibrary.png)
 
 Mobile
-![Screenshot of the application](assets/images/MD4mobile.jpeg)
+![Screenshot of the application](./src/landing/assets/screenshots/mobile.png)
+
+![Screenshot of the application](./src/landing/assets/screenshots/mobileLibrary.png)
 
 ## Credits & Resources
 
