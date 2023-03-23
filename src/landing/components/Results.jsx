@@ -9,12 +9,10 @@ function Results({ search }) {
   const scrollRef = useRef();
   const scrollCallback = () => {
     scrollRef.current.scrollIntoView({ behavior: "smooth" });
-    console.log("scrollCallback");
   };
   useEffect(() => {
     if (search !== "") {
       GoogleBooksAPI(search).then(({ data }) => {
-        console.log(data);
         setResult(data.items);
         setTimeout(() => {
           scrollCallback();
