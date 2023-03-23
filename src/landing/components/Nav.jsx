@@ -80,8 +80,8 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}>
-                    <MenuItem component={Link} to="/Library" onClick={handleCloseNavMenu}>My Library</MenuItem>
                     <MenuItem component={Link} to="/" onClick={handleCloseNavMenu}>Home</MenuItem>
+                    <MenuItem component={Link} to="/Library" onClick={handleCloseNavMenu}>My Library</MenuItem>
               </Menu>
             </Box>
             <Typography
