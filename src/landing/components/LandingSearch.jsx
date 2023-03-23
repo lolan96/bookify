@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-// import "../Library.css";
 
 const Form = styled.form`
 input[type="text"] {
@@ -57,7 +56,6 @@ function LandingSearch({ setSearch }) {
           type="text"
           value={value}
           onChange={handleChange}
-          // placeholder="..."
         />
       </label>
       <input type="submit" value="search" className="submitButton" />

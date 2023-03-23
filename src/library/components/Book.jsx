@@ -22,7 +22,6 @@ const Book = ({ bookdata, shelfId, state, setState }) => {
   const handleDelete = (shelfid, bookindex) => {
     const newState = [...state];
     const shelfIdx = state.findIndex(shelf => shelf.id === shelfid);
-    console.log(shelfIdx);
 
     const bookDetails = [...state[shelfIdx].bookDetails];
     bookDetails.splice(bookindex, 1);

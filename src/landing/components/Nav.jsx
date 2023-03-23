@@ -35,7 +35,6 @@ function ResponsiveAppBar() {
         }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
             <Typography
               variant="h6"
               noWrap
@@ -81,11 +80,8 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}>
-                {pages.map(page => (
-                  <MenuItem key={page} component={Link} to="/Library">
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+                    <MenuItem component={Link} to="/Library" onClick={handleCloseNavMenu}>My Library</MenuItem>
+                    <MenuItem component={Link} to="/" onClick={handleCloseNavMenu}>Home</MenuItem>
               </Menu>
             </Box>
             <Typography

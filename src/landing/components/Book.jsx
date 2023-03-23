@@ -5,7 +5,6 @@ import initialData from "../../library/components/initial-data";
 import "../Landing.css";
 
 function Book({ bookdata }) {
-  console.log(bookdata);
   // function that creates random number between 1 and million
   // const newId = `"${bookdata.industryidentifiers[0]}"`+ random number
   // parseint whole thing
